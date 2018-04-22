@@ -12,7 +12,7 @@ public class TextToFile : MonoBehaviour
     void Start()
     {
         //KeyStrokeLog-yyyy-MM-dd-HH-mm-ss-ms
-        file = Application.persistentDataPath + "/KeyStrokeLog-" + DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm-ss") + DateTime.UtcNow.Millisecond.ToString() + ".txt";
+        file = Application.persistentDataPath + "/KeyStrokeLog-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + DateTime.Now.Millisecond.ToString() + ".txt";
     }
 
     public void storeFile(string mes)

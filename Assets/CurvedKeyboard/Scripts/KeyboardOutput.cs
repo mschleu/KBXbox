@@ -36,7 +36,16 @@ using HoloLensKeyboard;
             if (Input.text.Length < MaximumInput)
             {
                 Input.text = Input.text + input;
-                manager.GetComponent<TextToFile>().storeFile("[" + DateTime.UtcNow.ToString("MM-dd-yyyy HH:mm:ss:") + DateTime.UtcNow.Millisecond.ToString() + "]       " + Input.text + "\r\n");
+
+            //OLD TIMESTAMP/////////////////////////////////////////
+            //manager.GetComponent<TextToFile>().storeFile("[" + DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss:") + DateTime.Now.Millisecond.ToString() + "]       " + Input.text + "\r\n");
+            ////////////////////////////////////////////////////////
+
+            //NEW TIMESTAMP/////////////////////////////////////////
+            manager.GetComponent<TextToFile>().storeFile("[" + manager.GetComponent<TimeStamp>().t + " | " + manager.GetComponent<TimeStamp>().since_start + " | " + manager.GetComponent<TimeStamp>().since_button + "]     " + Input.text + "\r\n");
+            ////////////////////////////////////////////////////////
+
+            manager.GetComponent<TimeStamp>().buttonTime = Time.time;
             }
         }
     }

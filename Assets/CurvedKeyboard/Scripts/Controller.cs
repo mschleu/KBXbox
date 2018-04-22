@@ -23,14 +23,25 @@ using HoloLensKeyboard;
         // Update is called once per frame
         void Update()
         {
-
         }
 
         public void startClicked()
         {
             blocker.SetActive(false);
-            manager.GetComponent<TextToFile>().storeFile("[MM-dd-yyyy HH:mm:ss:ms ]\r\n");
-            manager.GetComponent<TextToFile>().storeFile("[" + DateTime.UtcNow.ToString("MM-dd-yyyy HH:mm:ss:") + DateTime.UtcNow.Millisecond.ToString() + "]       Start\r\n");
+
+            //PREVIOUS TIMESTAMP///////////////////////////////////////////////////////////////////////
+            //manager.GetComponent<TextToFile>().storeFile("[MM-dd-yyyy HH:mm:ss:ms ]\r\n");
+            //manager.GetComponent<TextToFile>().storeFile("[" + DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss:") + DateTime.Now.Millisecond.ToString() + "]       --Start--\r\n");
+            ///////////////////////////////////////////////////////////////////////////////////////////
+
+            //NEW TIMESTAMP FORMAT/////////////////////////////////////////////////////////////////////
+            manager.GetComponent<TextToFile>().storeFile("[epoch | since start | since last button]\r\n");
+            manager.GetComponent<TextToFile>().storeFile("[" + manager.GetComponent<TimeStamp>().t + " | " + 0 + " | " + 0 + "]       --Start--\r\n");
+            manager.GetComponent<TimeStamp>().startTime = Time.time;
+            manager.GetComponent<TimeStamp>().buttonTime = Time.time;
+            manager.GetComponent<TimeStamp>().started = true;
+            ///////////////////////////////////////////////////////////////////////////////////////////
+
             myCreator.GetComponent<KeyboardCreator>().currentTheme = "keyboard";
             myCreator.GetComponent<KeyboardCreator>().Initialize();
         }
@@ -39,7 +50,16 @@ using HoloLensKeyboard;
         {
             blocker.SetActive(true);
             myInputField.text = "";
-            manager.GetComponent<TextToFile>().storeFile("[" + DateTime.UtcNow.ToString("MM-dd-yyyy HH:mm:ss:") + DateTime.UtcNow.Millisecond.ToString() + "]       Submit\r\n");
+
+            //PREVIOUS TIMESTAMP///////////////////////////////////////////////////////////////////////
+            //manager.GetComponent<TextToFile>().storeFile("[" + DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss:") + DateTime.Now.Millisecond.ToString() + "]       --Submit--\r\n");
+            ///////////////////////////////////////////////////////////////////////////////////////////
+
+            //NEW TIMESTAMP////////////////////////////////////////////////////////////////////////////
+            manager.GetComponent<TextToFile>().storeFile("[" + manager.GetComponent<TimeStamp>().t + " | " + manager.GetComponent<TimeStamp>().since_start + " | " + manager.GetComponent<TimeStamp>().since_button + "]       --Submit--\r\n\n");
+            manager.GetComponent<TimeStamp>().started = false;
+            ///////////////////////////////////////////////////////////////////////////////////////////
+
             myCreator.GetComponent<KeyboardCreator>().currentTheme = "default";
             myCreator.GetComponent<KeyboardCreator>().Initialize();
         }
