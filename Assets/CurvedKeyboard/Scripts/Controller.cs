@@ -35,8 +35,8 @@ using HoloLensKeyboard;
             ///////////////////////////////////////////////////////////////////////////////////////////
 
             //NEW TIMESTAMP FORMAT/////////////////////////////////////////////////////////////////////
-            manager.GetComponent<TextToFile>().storeFile("[epoch | since start | since last button]\r\n");
-            manager.GetComponent<TextToFile>().storeFile("[" + manager.GetComponent<TimeStamp>().t + " | " + 0 + " | " + 0 + "]       --Start--\r\n");
+            manager.GetComponent<TextToFile>().storeFile("time since epoch, time since start, time since last button\r\n");
+            manager.GetComponent<TextToFile>().storeFile(manager.GetComponent<TimeStamp>().t + ", " + 0 + ", " + 0 + ", --Start--\r\n");
             manager.GetComponent<TimeStamp>().startTime = Time.time;
             manager.GetComponent<TimeStamp>().buttonTime = Time.time;
             manager.GetComponent<TimeStamp>().started = true;
@@ -56,7 +56,7 @@ using HoloLensKeyboard;
             ///////////////////////////////////////////////////////////////////////////////////////////
 
             //NEW TIMESTAMP////////////////////////////////////////////////////////////////////////////
-            manager.GetComponent<TextToFile>().storeFile("[" + manager.GetComponent<TimeStamp>().t + " | " + manager.GetComponent<TimeStamp>().since_start + " | " + manager.GetComponent<TimeStamp>().since_button + "]       --Submit--\r\n\n");
+            manager.GetComponent<TextToFile>().storeFile(manager.GetComponent<TimeStamp>().t + ", " + manager.GetComponent<TimeStamp>().since_start + ", " + manager.GetComponent<TimeStamp>().since_button + ", --Submit--\r\n\n");
             manager.GetComponent<TimeStamp>().started = false;
             ///////////////////////////////////////////////////////////////////////////////////////////
 

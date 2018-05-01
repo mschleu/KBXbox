@@ -81,10 +81,12 @@ public class ControllerInputExample : MonoBehaviour
                 if (mKey == GameObject.Find("Start"))
                 {
                     Manager.GetComponent<Controller>().startClicked();
+                    Manager.GetComponent<PhraseSet>().listStart();
                 }
                 else if (mKey == GameObject.Find("Submit"))
                 {
                     Manager.GetComponent<Controller>().submitClicked();
+                    Manager.GetComponent<PhraseSet>().listSubmit();
                 }
                 else if (mKey.tag == "Keys")
                 {

@@ -42,7 +42,7 @@ using HoloLensKeyboard;
             ////////////////////////////////////////////////////////
 
             //NEW TIMESTAMP/////////////////////////////////////////
-            manager.GetComponent<TextToFile>().storeFile("[" + manager.GetComponent<TimeStamp>().t + " | " + manager.GetComponent<TimeStamp>().since_start + " | " + manager.GetComponent<TimeStamp>().since_button + "]     " + Input.text + "\r\n");
+            manager.GetComponent<TextToFile>().storeFile(manager.GetComponent<TimeStamp>().t + ", " + manager.GetComponent<TimeStamp>().since_start + ", " + manager.GetComponent<TimeStamp>().since_button + ", " + Input.text + "\r\n");
             ////////////////////////////////////////////////////////
 
             manager.GetComponent<TimeStamp>().buttonTime = Time.time;
